@@ -1,0 +1,56 @@
+/* App.css or Home.css */
+
+.Home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Full height of the viewport */
+    background-color: #f0f4f8;
+    /* Light background color */
+    color: #333;
+    /* Text color */
+    text-align: center;
+    /* Center the text */
+}
+
+.Home h1 {
+    margin-bottom: 30px;
+    /* Space below the heading */
+    font-size: 2.5rem;
+    /* Font size for the heading */
+    font-weight: bold;
+    /* Bold font weight */
+}
+
+.App-button {
+    padding: 15px 25px;
+    /* Padding for the buttons */
+    margin: 10px;
+    /* Space between buttons */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Rounded corners */
+    background-color: #007bff;
+    /* Bootstrap primary color */
+    color: white;
+    /* Text color */
+    font-size: 1.2rem;
+    /* Font size for buttons */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+.App-button:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+}
+
+.App-button:focus {
+    outline: none;
+    /* Remove focus outline */
+}
