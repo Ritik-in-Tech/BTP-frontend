@@ -8,7 +8,7 @@ export const registerUser = async (
   s3Url
 ) => {
   try {
-    const response = await axios.post("http://localhost:80/api/v1/users", {
+    const response = await axios.post("http://localhost/api/v1/users", {
       email,
       rollnumber,
       password,
@@ -16,12 +16,8 @@ export const registerUser = async (
       fingerprintUrl: s3Url,
     });
 
-    if (response.status === 201) {
-      console.log("User registered successfully:", response.data);
-    } else {
-      console.error("Failed to register user:", response.data);
-    }
+    return response.data;
   } catch (error) {
-    console.error("Error registering user:", error);
+    return error.response.data;
   }
 };
