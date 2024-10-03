@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import for navigation
 import { CaptureFinger, GetMFS100Info } from "../msf100";
 import AWS from "aws-sdk";
 import { Buffer } from "buffer";
@@ -14,6 +15,7 @@ const RegisterUser = () => {
   const [email, setEmail] = useState("");
   const [rollnumber, setRollnumber] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // useNavigate hook to navigate to another page
 
   const s3 = new AWS.S3({
     accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
@@ -98,18 +100,10 @@ const RegisterUser = () => {
         s3Url
       );
 
-      // console.log(response);
-
-      // console.log(response);
-      // console.log(response.statusCode);
       if (response.statusCode === 201) {
         toast.success(response.message);
-        setAnsiTemplate("");
-        setBitmapData("");
-        setEmail("");
-        setPassword("");
-        setFingerprintCaptured("");
-        setRollnumber("");
+        // Navigate to the VerifyUser page and pass the roll number
+        navigate("/verify", { state: { rollnumber } });
       } else {
         const message = response.message;
         toast.error(message);

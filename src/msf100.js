@@ -33,11 +33,11 @@ const CaptureMultiFinger = async (quality, timeout, nooffinger) => {
   return await PostMFS100Client("capturewithdeduplicate", jsondata);
 };
 
-const VerifyFinger = async (ProbFMR, GalleryFMR) => {
+export const VerifyFinger = async (ProbFMR, GalleryFMR) => {
   const MFS100Request = {
     ProbTemplate: ProbFMR,
     GalleryTemplate: GalleryFMR,
-    BioType: "FMR", // or "ANSI" if using ANSI Template
+    BioType: "ANSI", // or "ANSI" if using ANSI Template
   };
   const jsondata = JSON.stringify(MFS100Request);
   return await PostMFS100Client("verify", jsondata);
@@ -68,6 +68,7 @@ const GetRbdData = async (BiometricArray) => {
 
 const PostMFS100Client = async (method, jsonData) => {
   try {
+    console.log("Hello World");
     const response = await fetch(insecureUri + method, {
       method: "POST",
       headers: {
@@ -81,6 +82,7 @@ const PostMFS100Client = async (method, jsonData) => {
     }
 
     const data = await response.json();
+    console.log(data);
     return { httpStatus: true, data };
   } catch (error) {
     return { httpStatus: false, err: getHttpError(error) };
